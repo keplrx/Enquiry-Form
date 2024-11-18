@@ -1,0 +1,361 @@
+.cart-table {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+.cart-table th, .cart-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.product-column {
+    width: 50%;
+}
+.product-info {
+    display: flex;
+    align-items: center;
+}
+.product-info img {
+    margin-right: 10px;
+    max-width: 100px;
+    max-height: 100px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.product-name {
+    font-weight: 700;
+}
+.product-details {
+    display: flex;
+    flex-direction: column;
+}
+.remove-item {
+    font-size: 0.8em;
+    color: #555;
+}
+.category-column {
+    text-align: center;
+}
+.sku-column {
+    text-align: center; 
+}
+.sku-text {
+    text-align: center; 
+}
+
+.ef-enquiry-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.half-width {
+    width: 48%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 100px;
+}
+
+.submit-button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.submit-button:hover {
+    background-color: #333;
+}
+
+.submit-button:disabled {
+    background-color: #ccc; /* Grey background */
+    color: #666; /* Grey text */
+    cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+}
+
+@media screen and (max-width: 768px) {
+    .cart-table {
+        width: 95%;
+    }
+    .cart-table th, .cart-table td {
+        padding: 8px;
+    }
+    .product-column {
+        width: 100%;
+    }
+    .product-info img {
+        max-width: 40px;
+        max-height: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    .category-column {
+        display: none;
+    }
+    
+    /* Form scaling */
+    .ef-enquiry-form {
+        width: 95%;
+        margin: 0 auto;
+    }
+    .form-row {
+        flex-direction: column;
+    }
+    .half-width {
+        width: 100%;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        font-size: 16px; /* Prevents zoom on mobile */
+    }
+    .submit-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin: 0 auto;
+    }
+}
+
+#ef-thank-you-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ef-thank-you-popup {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 90%;
+    width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ef-thank-you-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+}
+
+.ef-thank-you-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.ef-thank-you-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+}
+
+.ef-button-container {
+    margin-top: 2rem;
+}
+
+@media (max-width: 480px) {
+    #ef-thank-you-popup {
+        padding: 1.5rem;
+    }
+
+    .ef-thank-you-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
+.ef-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ef-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ef-button-primary {
+    background-color: #000;
+    color: white;
+}
+
+.ef-button-primary:hover {
+    background-color: #333;
+}
+
+.ef-button-secondary {
+    background-color: transparent;
+    color: #000;
+}
+
+.ef-button-secondary:hover {
+    color: #333;
+}
+
+@media (max-width: 480px) {
+    .ef-thank-you-content {
+        padding: 1.5rem;
+    }
+
+    .ef-thank-you-content h1 {
+        font-size: 1.25rem;
+    }
+
+    .ef-thank-you-content p {
+        font-size: 0.8rem;
+    }
+
+    .ef-thank-you-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ef-thank-you-icon .ef-checkmark {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+#ef-thank-you-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9998;
+    display: none;
+}
+
+#ef-thank-you-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 90%;
+    width: 600px;
+    z-index: 9999;
+    display: none;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.empty-cart-message {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.empty-cart-text {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.add-products-link {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.add-products-link:hover {
+    background-color: #333;
+}
+
+.error-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-align: center;
+    border: 2px solid #ff0000;
+}
+
+.error-popup p {
+    color: #ff0000;
+    margin: 0;
+    font-weight: bold;
+}
+
+.loading {
+    cursor: wait; 
+}
+
+.ef-thank-you-content h1 {
+    padding-top: 10px; 
+    padding-bottom: 5px;
+}
+
+.ef-thank-you-content p {
+    padding: 5px;
+}
+
+.ef-thank-you-icon {
+    padding-top: 10px; 
+    margin-bottom: -10px; 
+}

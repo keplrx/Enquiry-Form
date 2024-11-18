@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.header {
+    background-color: #003366;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.signature {
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table td:first-child {
+    font-weight: bold;
+    width: 30%;
+    background-color: #f8f8f8;
+}
+
+.table td:last-child {
+    width: 70%;
+}
+
+.cart-contents {
+    margin-top: 30px;
+}
+
+.cart-contents h2 {
+    margin-bottom: 15px;
+}
+
+.cart-contents .table {
+    margin-top: 0;
+}
+
+.cart-contents .table th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.toggle:checked ~ .message {
+    display: block;
+}
+
+.label {
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+}
