@@ -39,14 +39,11 @@ A simple and customizable WordPress plugin that extends WooCommerce functionalit
 
 ## Screenshots
 
-| Features                      | Screenshot                                                                 |
-|-------------------------------|----------------------------------------------------------------------------|
-| Enquiry Cart View             |![image](https://github.com/user-attachments/assets/7fe7e2cc-7d49-401f-b929-5f82a1cddaff)
-|
-| Enquiry Form Submission       |![image](https://github.com/user-attachments/assets/6ce98c4e-59a2-4f2c-88b2-f79505b8cd97)
-|
-| Admin Notification Email      |![image](https://github.com/user-attachments/assets/e38cd342-5656-4b15-8802-10d2298107c8)
-|
+| Features                  | Screenshot                                                                                   |
+|---------------------------|---------------------------------------------------------------------------------------------|
+| Enquiry Cart View         | ![image](https://github.com/user-attachments/assets/7fe7e2cc-7d49-401f-b929-5f82a1cddaff)   |
+| Enquiry Form Submission   | ![image](https://github.com/user-attachments/assets/6ce98c4e-59a2-4f2c-88b2-f79505b8cd97)   |
+| Admin Notification Email  | ![image](https://github.com/user-attachments/assets/e38cd342-5656-4b15-8802-10d2298107c8)   |
 
 ---
 
