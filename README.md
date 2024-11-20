@@ -7,11 +7,15 @@
 A simple and customizable WordPress plugin that extends WooCommerce functionality by adding an **enquiry system** for products. Users can select items, add them to an enquiry cart, and submit their inquiries via a form.
 
 ## Features
+
 - 🛒 **Custom Enquiry Cart**: Users can add products to an enquiry list.
 - 📄 **Inquiry Form**: Captures user inquiries with additional fields.
 - 📧 **Email Integration**: Sends enquiry details via email to admins and customers.
 - 🔗 **WooCommerce Hooks**: Built on WooCommerce for seamless integration.
-- 🎨 **Customizable Templates**: Modify enquiry form, cart display, and notification emails.
+- 📊 **Admin Enquiry Management**: 
+  - View and manage all enquiries in a dedicated admin panel.
+  - Update enquiry statuses: **Unreplied**, **Replied**, or **Done**.
+  - Bulk actions: Update statuses or delete multiple enquiries at once.
 
 ---
 
@@ -34,6 +38,7 @@ A simple and customizable WordPress plugin that extends WooCommerce functionalit
 2. The plugin automatically adds an **"Add to Enquiry"** button to product pages.
 3. Users can view their selected items in the **Enquiry Cart**.
 4. A form allows users to submit their inquiries. Both admin and the user receive email notifications.
+5. Admins can view, manage, and update enquiry statuses or delete enquiries in bulk from the **Admin Enquiry Management** section.
 
 ---
 
@@ -44,6 +49,7 @@ A simple and customizable WordPress plugin that extends WooCommerce functionalit
 | Enquiry Cart View         | ![image](https://github.com/user-attachments/assets/7fe7e2cc-7d49-401f-b929-5f82a1cddaff)   |
 | Enquiry Form Submission   | ![image](https://github.com/user-attachments/assets/6ce98c4e-59a2-4f2c-88b2-f79505b8cd97)   |
 | Admin Notification Email  | ![image](https://github.com/user-attachments/assets/e38cd342-5656-4b15-8802-10d2298107c8)   |
+| Admin Enquiry Management  | ![image](https://github.com/user-attachments/assets/bca66304-d316-4aec-ac81-5fc6a2ebf171)   |
 
 ---
 
@@ -62,17 +68,10 @@ A simple and customizable WordPress plugin that extends WooCommerce functionalit
   ```
 - Adjust styling or content in `enquiry-confirmation-template.php` and `enquiry-notification-template.php`.
 
----
-
-## Development Setup
-
-1. **Install Node.js** (optional for asset building).
-2. **Run in Local Dev**:
-   ```bash
-   npm install
-   npm run build
-   ```
-3. Make changes and test on your local WordPress installation.
+### **Enquiry Management**
+- The enquiry management interface can be accessed from:
+  - **WordPress Admin Panel > Enquiries**.
+- Statuses can be updated, and enquiries can be deleted in bulk via the admin interface.
 
 ---
 
@@ -90,8 +89,5 @@ This project is licensed under the GNU General Public License. See the [LICENSE]
 
 ## Contact
 
-For questions or issues, open an issue on GitHub or contact [keplrx](https://github.com/keplrx).
+For questions or issues, open an issue on GitHub or contact [keplrx](https://github.com/keplrx). 
 
----
-
-Let me know if you'd like me to customize or expand on any section further! 😊
