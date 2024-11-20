@@ -229,7 +229,7 @@ jQuery(document).ready(function($) {
                     },
                     layout: {
                         padding: {
-                            top: 40,
+                            top: 20,
                             bottom: 40,
                             left: 20,
                             right: 20

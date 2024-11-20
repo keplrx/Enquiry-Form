@@ -211,9 +211,20 @@
 }
 
 .ef-chart-container.status-chart {
+    position: relative;
     width: 100%;
-    aspect-ratio: 1;
-    padding: 20px;
+    max-width: 400px;  /* Adjusted max-width */
+    height: 0;
+    padding-bottom: 100%;  /* Creates a perfect square container */
+    margin: 0 auto;
+}
+
+#statusChart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .ef-chart-wrapper {
@@ -255,12 +266,6 @@
 
 .ef-quick-links {
     margin-top: 30px;
-}
-
-#statusChart {
-    width: 100% !important;
-    height: 100% !important;
-    aspect-ratio: 1 !important;
 }
 
 .ef-dashboard-grid {
