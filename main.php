@@ -2,7 +2,7 @@
 /*
 Plugin Name: Enquiry Form
 Description: A plugin made by an intern at KBSS :)
-Version: 0.8.2 Development
+Version: 0.8.3 Development
 Author: Nash Madrid
 Author URI: https://sites.google.com/view/portfoliobynashmadrid/home
 License: GPLv3
@@ -36,9 +36,22 @@ if (!defined('ABSPATH')) {
 define('ENQUIRY_FORM_VERSION', '1.0');
 define('ENQUIRY_FORM_PATH', plugin_dir_path(__FILE__));
 define('ENQUIRY_FORM_URL', plugin_dir_url(__FILE__));
+// define('ENQUIRY_FORM_VERSION', '1.0.0');
+
+// // Required file includes
+// require_once ENQUIRY_FORM_PATH . 'includes/class-ef-loader.php';
+// require_once ENQUIRY_FORM_PATH . 'includes/class-ef-activator.php';
+// require_once ENQUIRY_FORM_PATH . 'includes/class-ef-deactivator.php';
+// require_once ENQUIRY_FORM_PATH . 'admin/class-ef-admin.php';
+// require_once ENQUIRY_FORM_PATH . 'public/class-ef-public.php';
 
 // Include logger class
 require_once ENQUIRY_FORM_PATH . 'includes/class-ef-logger.php';
+// // Verify file existence
+// if (!file_exists(ENQUIRY_FORM_PATH . 'includes/class-ef-loader.php')) {
+//     error_log('Enquiry Form: Missing required file - class-ef-loader.php');
+//     return;
+// }
 
 // Initialize logger
 EF_Logger::getInstance();

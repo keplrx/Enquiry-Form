@@ -82,8 +82,8 @@ function export_enquiries_to_csv() {
 
         // Build the query
         $query = "SELECT e.id AS enquiry_id, e.subject, e.content, e.name, e.company, 
-                        e.email, e.phone, e.created_at, e.processed, e.status, 
-                        ci.product_name, ci.quantity, ci.sku
+                        e.email, e.phone, e.created_at, e.status, 
+                        ci.product_name, ci.sku
                  FROM $enquiries_table AS e
                  LEFT JOIN $cart_items_table AS ci ON e.id = ci.enquiry_id
                  WHERE 1=1";
@@ -130,8 +130,8 @@ function export_enquiries_to_csv() {
         
         // Write CSV headers
         fputcsv($output, array('Enquiry ID', 'Subject', 'Content', 'Name', 'Company', 
-                              'Email', 'Phone', 'Created At', 'Processed', 'Status', 
-                              'Product Name', 'Quantity', 'SKU'));
+                              'Email', 'Phone', 'Order Time', 'Status', 
+                              'Product Name', 'SKU'));
 
         // Write data rows
         foreach ($results as $row) {

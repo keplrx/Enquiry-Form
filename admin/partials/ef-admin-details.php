@@ -37,8 +37,8 @@ function display_enquiry_details_page() {
     echo '<tr><th>Content</th><td>' . nl2br(esc_html($enquiry->content)) . '</td></tr>';
     echo '</table>';
 
+    echo '<h2>Products</h2>';
     if (!empty($products)) {
-        echo '<h2>Products</h2>';
         echo '<table class="ef-product-list">';
         echo '<thead><tr><th class="sku">SKU</th><th class="product-name">Product Name</th></tr></thead>';
         echo '<tbody>';

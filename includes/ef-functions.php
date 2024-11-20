@@ -5,7 +5,6 @@ if (!defined('ABSPATH')) {
 }
 
 // Include class files
-require_once ENQUIRY_FORM_PATH . 'includes/class-ef-ajax.php';
 require_once ENQUIRY_FORM_PATH . 'includes/class-ef-post-type.php';
 require_once ENQUIRY_FORM_PATH . 'includes/class-ef-db.php';
 require_once ENQUIRY_FORM_PATH . 'includes/class-ef-email.php';

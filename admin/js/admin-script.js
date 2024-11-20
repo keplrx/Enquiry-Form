@@ -200,24 +200,17 @@ jQuery(document).ready(function($) {
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '70%',
+                    maintainAspectRatio: true,
+                    aspectRatio: 1,
+                    cutout: '60%',
                     plugins: {
                         legend: {
                             position: 'bottom',
                             labels: {
-                                padding: 20,
-                                usePointStyle: true
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    const label = context.label || '';
-                                    const value = context.parsed || 0;
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = total ? Math.round((value / total) * 100) : 0;
-                                    return `${label}: ${value} (${percentage}%)`;
+                                padding: 10,
+                                usePointStyle: true,
+                                font: {
+                                    size: 11
                                 }
                             }
                         },
@@ -225,18 +218,22 @@ jQuery(document).ready(function($) {
                             color: '#000000',
                             font: {
                                 weight: 'bold',
-                                size: 14
+                                size: 11
                             },
                             formatter: function(value, context) {
                                 const total = context.dataset.data.reduce((a, b) => a + b, 0);
                                 const percentage = total ? Math.round((value / total) * 100) : 0;
-                                return `${value}\n(${percentage}%)`;
-                            },
-                            textAlign: 'center'
+                                return `${percentage}%`;
+                            }
                         }
                     },
                     layout: {
-                        padding: 20
+                        padding: {
+                            top: 40,
+                            bottom: 40,
+                            left: 20,
+                            right: 20
+                        }
                     }
                 },
                 plugins: [ChartDataLabels]
@@ -273,22 +270,42 @@ jQuery(document).ready(function($) {
                         x: {
                             title: {
                                 display: true,
-                                text: 'Date'
+                                text: 'Date',
+                                font: {
+                                    size: 11
+                                }
                             },
                             ticks: {
                                 maxRotation: 45,
-                                minRotation: 45
+                                minRotation: 45,
+                                font: {
+                                    size: 10
+                                }
                             }
                         },
                         y: {
                             title: {
                                 display: true,
-                                text: 'Number of Enquiries'
+                                text: 'Number of Enquiries',
+                                font: {
+                                    size: 11
+                                }
                             },
                             beginAtZero: true,
                             ticks: {
-                                stepSize: 1
+                                stepSize: 1,
+                                font: {
+                                    size: 10
+                                }
                             }
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            top: 20,
+                            bottom: 20,
+                            left: 10,
+                            right: 10
                         }
                     },
                     plugins: {

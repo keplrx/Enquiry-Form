@@ -79,10 +79,20 @@ function enquiry_form_admin_menu() {
 
 add_action('admin_menu', 'enquiry_form_admin_menu');
 
+// function enquiry_form_enqueue_admin_assets() {
+//     // Enqueue existing admin script
+//     wp_enqueue_script('enquiry-form-admin-script', ENQUIRY_FORM_URL . 'admin/js/admin-script.js', array('jquery'), ENQUIRY_FORM_VERSION, true);
+    
+//     // Enqueue admin stylesheet
+//     wp_enqueue_style('enquiry-form-admin-style', ENQUIRY_FORM_URL . 'admin/css/admin-style.css', array(), ENQUIRY_FORM_VERSION);
+// }
+// add_action('admin_enqueue_scripts', 'enquiry_form_enqueue_admin_assets');
+
 function enquiry_form_enqueue_admin_assets($hook) {
-    if (strpos($hook, 'enquiry-form') === false) {
-        return;
-    }
+    // Remove the condition to allow styles to load on all admin pages
+    // if (strpos($hook, 'enquiry-form') === false) {
+    //     return;
+    // }
 
     // Enqueue Chart.js
     wp_enqueue_script(
@@ -102,19 +112,19 @@ function enquiry_form_enqueue_admin_assets($hook) {
         true
     );
 
-    // Your admin script
+    // Your admin script - using the working path structure
     wp_enqueue_script(
         'ef-admin-script',
-        plugins_url('js/admin-script.js', __FILE__),
+        ENQUIRY_FORM_URL . 'admin/js/admin-script.js',
         array('jquery', 'chartjs', 'chartjs-plugin-datalabels'),
         ENQUIRY_FORM_VERSION,
         true
     );
 
-    // Enqueue admin styles
+    // Enqueue admin styles - using the working path structure
     wp_enqueue_style(
         'ef-admin-style',
-        plugins_url('css/admin-style.css', __FILE__),
+        ENQUIRY_FORM_URL . 'admin/css/admin-style.css',
         array(),
         ENQUIRY_FORM_VERSION
     );

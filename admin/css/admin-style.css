@@ -195,42 +195,61 @@
 }
 
 .ef-chart-container {
-    background: white;
+    flex: 1;
+    min-height: 0px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin: 20px 0;
-    min-height: 400px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.ef-chart-container.trend-chart {
+    min-height: 200px;
+    height: 300px;
+    padding: 20px;
+}
+
+.ef-chart-container.status-chart {
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 20px;
+}
+
+.ef-chart-wrapper {
+    position: absolute;
+    top: 40px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
 }
 
 .ef-stat-boxes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+    max-width: 95%;
 }
 
 .ef-stat-box {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 6px;
-    text-align: center;
-}
-
-.ef-stat-box.new-enquiries {
-    background: #e8f5e9;
+    padding: 12px 8px;
+    height: auto;
+    min-height: 70px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .ef-stat-number {
-    display: block;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 4px;
     color: #2271b1;
 }
 
 .ef-stat-label {
-    display: block;
-    margin-top: 5px;
+    font-size: 12px;
+    line-height: 1.2;
     color: #666;
 }
 
@@ -241,97 +260,45 @@
 #statusChart {
     width: 100% !important;
     height: 100% !important;
+    aspect-ratio: 1 !important;
 }
 
 .ef-dashboard-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 20px 0;
+    grid-template-columns: 70fr 30fr;
+    gap: 15px;
+    margin: 15px 0;
+    height: calc(100vh - 280px);
+    max-height: 800px;
 }
 
 .ef-left-column, .ef-right-column {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-
-.ef-stats-section, .ef-chart-container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.ef-stat-boxes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 15px;
-    margin-top: 15px;
+    height: 100%;
 }
 
-.ef-stat-box {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 6px;
-    text-align: center;
+/* Responsive adjustments */
+@media screen and (max-width: 1400px) {
+    .ef-stat-boxes {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.ef-stat-box.new-enquiries {
-    background: #e8f5e9;
+@media screen and (max-width: 1200px) {
+    .ef-dashboard-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .ef-chart-container {
+        min-height: 300px;
+    }
 }
 
-.ef-stat-number {
-    display: block;
-    font-size: 24px;
-    font-weight: bold;
-    color: #2271b1;
-}
-
-.ef-stat-label {
-    display: block;
-    margin-top: 5px;
-    color: #666;
-}
-
-.ef-chart-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-/* Different wrapper heights for each chart type */
-.ef-chart-container.trend-chart .ef-chart-wrapper {
-    height: 500px; /* Increased height for trend chart */
-}
-
-.ef-chart-container.status-chart .ef-chart-wrapper {
-    height: 300px; /* Keep original height for pie chart */
-}
-
-/* Chart-specific styles */
-#trendChart {
-    height: 100% !important; /* Fill the wrapper height */
-}
-
-#statusChart {
-    height: 300px !important; /* Keep original height */
-}
-
-.ef-refresh-form {
-    margin: 15px 0;
-    text-align: right;
-}
-
-.ef-refresh-form button {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.ef-refresh-form .dashicons {
-    font-size: 16px;
-    width: 16px;
-    height: 16px;
-    padding-right: 3px;
-    padding-top: 6px;
+@media screen and (max-width: 600px) {
+    .ef-stat-boxes {
+        grid-template-columns: 1fr;
+    }
 }
