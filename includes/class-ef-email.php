@@ -23,12 +23,15 @@ class EF_Email {
 
     public static function send_notification_email($form_data) {
         try {
+            if (!class_exists('WP_Mail_Smtp')) {
+                throw new Exception('WP Mail SMTP plugin is not active');
+            }
+
             if (empty($form_data['email']) || empty($form_data['name'])) {
                 throw new Exception('Required form data missing');
             }
 
             $to = get_option('enquiry_form_email', get_option('admin_email'));
-
             $subject = 'New Enquiry: ' . sanitize_text_field($form_data['subject']);
             $message = self::get_notification_template($form_data);
             $headers = array('Content-Type: text/html; charset=UTF-8');
@@ -54,7 +57,8 @@ class EF_Email {
                 EF_Logger::ERROR,
                 [
                     'error' => $e->getMessage(),
-                    'recipient' => $to ?? 'unknown'
+                    'recipient' => $to ?? 'unknown',
+                    'wp_mail_smtp_active' => class_exists('WP_Mail_Smtp')
                 ]
             );
             return false;
@@ -63,13 +67,16 @@ class EF_Email {
 
     public static function send_confirmation_email($form_data) {
         try {
+            if (!class_exists('WP_Mail_Smtp')) {
+                throw new Exception('WP Mail SMTP plugin is not active');
+            }
+
             $to = $form_data['email'];
             if (empty($to)) {
                 throw new Exception('Recipient email is missing');
             }
 
             $from_email = get_option('enquiry_form_email', 'noreply@example.com');
-
             $subject = 'Enquiry Confirmation: ' . sanitize_text_field($form_data['subject']);
             $message = self::get_confirmation_template($form_data);
             $headers = array('Content-Type: text/html; charset=UTF-8', 'From: ' . $from_email);
@@ -94,7 +101,8 @@ class EF_Email {
                 EF_Logger::ERROR,
                 [
                     'error' => $e->getMessage(),
-                    'recipient' => $to ?? 'unknown'
+                    'recipient' => $to ?? 'unknown',
+                    'wp_mail_smtp_active' => class_exists('WP_Mail_Smtp')
                 ]
             );
             return false;
