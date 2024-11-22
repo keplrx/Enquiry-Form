@@ -10,7 +10,7 @@ function cart_display() {
 
     // Assume WooCommerce is active and cart is not empty, as checked in ef-public.php
     $cart = WC()->cart;
-
+    // test
     ?>
     <form class="woocommerce-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
         <table class="cart-table">
