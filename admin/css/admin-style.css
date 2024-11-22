@@ -284,6 +284,12 @@
     height: 100%;
 }
 
+.dashicons-update {
+    padding-top: 10px;
+    padding-right: 5px;
+}
+
+
 /* Responsive adjustments */
 @media screen and (max-width: 1400px) {
     .ef-stat-boxes {

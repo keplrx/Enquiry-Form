@@ -5,10 +5,8 @@ if (!defined('ABSPATH')) {
 }
 
 // Include class files
-require_once ENQUIRY_FORM_PATH . 'includes/class-ef-post-type.php';
-require_once ENQUIRY_FORM_PATH . 'includes/class-ef-db.php';
+require_once ENQUIRY_FORM_PATH . 'includes/class-ef-activation.php';
 require_once ENQUIRY_FORM_PATH . 'includes/class-ef-email.php';
-require_once ENQUIRY_FORM_PATH . 'includes/class-ef-logger.php';
 require_once ENQUIRY_FORM_PATH . 'includes/class-ef-caching.php';
 
 function ef_process_form_data($form_data) {
