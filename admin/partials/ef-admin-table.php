@@ -113,6 +113,8 @@ function display_enquiry_orders_page() {
         }
     } else {
         echo '<p>No enquiries found.</p>';
+        echo '<br>';
+        echo '<p>If you are seeing this, either the table is empty or does not exist. Check your database for any issues.</p>';
     }
 
     echo '</div>';
