@@ -16,17 +16,6 @@ function display_enquiry_export_page() {
         <?php
     }
 
-    // // Check if the current user is "Nash_Intern"
-    // $current_user = wp_get_current_user();
-    // if ($current_user->user_login !== 'Nash_Intern') {
-    //     echo '<div class="wrap"><h1>Work in Progress</h1><p>This export page is currently under development. Please check back later.</p></div>';
-    //     echo '<br>';
-    //     echo '<p>If you need to access this page, please contact the developer at <a href="mailto:nashc.mad@gmail.com">nashc.mad@gmail.com</a>.</p>';
-    //     echo '<br>';
-    //     echo '<a href="?page=ef-settings">Back to Settings</a>';
-    //     return;
-    // }
-
     // Display the export form
     ?>
     <div class="wrap">
