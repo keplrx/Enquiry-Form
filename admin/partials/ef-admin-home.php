@@ -79,6 +79,18 @@ function get_status_distribution() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'ef_enquiries';
     
+    // Check if table exists and has any entries
+    $table_exists = $wpdb->get_var("SHOW TABLES LIKE '$table_name'") === $table_name;
+    $has_entries = $table_exists ? $wpdb->get_var("SELECT COUNT(*) FROM $table_name") > 0 : false;
+    
+    if (!$table_exists || !$has_entries) {
+        return array(
+            array('status' => 'Unreplied', 'count' => 0),
+            array('status' => 'Replied', 'count' => 0),
+            array('status' => 'Done', 'count' => 0)
+        );
+    }
+    
     // First, get the IDs of the last 20 enquiries
     $last_20_ids = $wpdb->get_col(
         "SELECT id 
@@ -177,13 +189,6 @@ function display_home_page() {
         delete_transient('ef_stats_week');
         delete_transient('ef_status_distribution');
         delete_transient('ef_enquiries_trend');
-        
-        add_settings_error(
-            'ef_messages',
-            'ef_refresh_success',
-            'Dashboard statistics refreshed successfully.',
-            'updated'
-        );
     }
     
     $year_count = get_enquiry_stats('year');
@@ -193,68 +198,78 @@ function display_home_page() {
     $status_distribution = get_status_distribution();
     $trend_data = get_enquiries_trend();
     
-    $status_data = wp_json_encode($status_distribution);
-    $trend_data = wp_json_encode($trend_data);
+    $has_data = $year_count > 0 || $month_count > 0 || $week_count > 0;
     
     ?>
     <div class="wrap">
         <h1>Enquiry Form Dashboard</h1>
         
-        <!-- Add refresh form -->
-        <form method="post" class="ef-refresh-form">
-            <?php wp_nonce_field('ef_refresh_stats'); ?>
-            <button type="submit" name="refresh_stats" class="button">
-                <span class="dashicons dashicons-update"></span> 
-                Refresh Statistics
-            </button>
-        </form>
-        
-        <div class="ef-dashboard-grid">
-            <!-- Left Column -->
-            <div class="ef-left-column">
-                <!-- Stats Section -->
-                <div class="ef-stats-section">
-                    <h3>Enquiries Received</h3>
-                    <div class="ef-stat-boxes">
-                        <div class="ef-stat-box new-enquiries">
-                            <span class="ef-stat-number"><?php echo esc_html($new_enquiries); ?></span>
-                            <span class="ef-stat-label">New Enquiries (24h)</span>
+        <?php if (!$has_data): ?>
+            <div class="notice notice-info">
+                <p>No enquiries have been submitted yet. The dashboard will populate once you receive enquiries.</p>
+                <p>To test the system, you can:</p>
+                <ul style="list-style-type: disc; margin-left: 20px;">
+                    <li>Submit a test enquiry from your website's front end</li>
+                    <li>Import sample data from the Settings page</li>
+                </ul>
+            </div>
+        <?php else: ?>
+            <!-- Existing dashboard content -->
+            <form method="post" class="ef-refresh-form">
+                <?php wp_nonce_field('ef_refresh_stats'); ?>
+                <button type="submit" name="refresh_stats" class="button">
+                    <span class="dashicons dashicons-update"></span> 
+                    Refresh Statistics
+                </button>
+            </form>
+            
+            <div class="ef-dashboard-grid">
+                <!-- Left Column -->
+                <div class="ef-left-column">
+                    <!-- Stats Section -->
+                    <div class="ef-stats-section">
+                        <h3>Enquiries Received</h3>
+                        <div class="ef-stat-boxes">
+                            <div class="ef-stat-box new-enquiries">
+                                <span class="ef-stat-number"><?php echo esc_html($new_enquiries); ?></span>
+                                <span class="ef-stat-label">New Enquiries (24h)</span>
+                            </div>
+                            <div class="ef-stat-box">
+                                <span class="ef-stat-number"><?php echo esc_html($week_count); ?></span>
+                                <span class="ef-stat-label">Last 7 Days</span>
+                            </div>
+                            <div class="ef-stat-box">
+                                <span class="ef-stat-number"><?php echo esc_html($month_count); ?></span>
+                                <span class="ef-stat-label">Last Month</span>
+                            </div>
+                            <div class="ef-stat-box">
+                                <span class="ef-stat-number"><?php echo esc_html($year_count); ?></span>
+                                <span class="ef-stat-label">Last Year</span>
+                            </div>
                         </div>
-                        <div class="ef-stat-box">
-                            <span class="ef-stat-number"><?php echo esc_html($week_count); ?></span>
-                            <span class="ef-stat-label">Last 7 Days</span>
-                        </div>
-                        <div class="ef-stat-box">
-                            <span class="ef-stat-number"><?php echo esc_html($month_count); ?></span>
-                            <span class="ef-stat-label">Last Month</span>
-                        </div>
-                        <div class="ef-stat-box">
-                            <span class="ef-stat-number"><?php echo esc_html($year_count); ?></span>
-                            <span class="ef-stat-label">Last Year</span>
+                    </div>
+
+                    <!-- Trend Chart -->
+                    <div class="ef-chart-container trend-chart">
+                        <h3>Enquiries Trend</h3>
+                        <div class="ef-chart-wrapper">
+                            <canvas id="trendChart" data-trend='<?php echo esc_attr($trend_data); ?>'></canvas>
                         </div>
                     </div>
                 </div>
 
-                <!-- Trend Chart -->
-                <div class="ef-chart-container trend-chart">
-                    <h3>Enquiries Trend</h3>
-                    <div class="ef-chart-wrapper">
-                        <canvas id="trendChart" data-trend='<?php echo esc_attr($trend_data); ?>'></canvas>
+                <!-- Right Column - Status Distribution -->
+                <div class="ef-right-column">
+                    <!-- Status Distribution -->
+                    <div class="ef-chart-container status-chart">
+                        <h3>Status Distribution (Last 20)</h3>
+                        <div class="ef-chart-wrapper">
+                            <canvas id="statusChart" data-status-distribution='<?php echo esc_attr($status_data); ?>'></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Right Column - Status Distribution -->
-            <div class="ef-right-column">
-                <!-- Status Distribution -->
-                <div class="ef-chart-container status-chart">
-                    <h3>Status Distribution (Last 20)</h3>
-                    <div class="ef-chart-wrapper">
-                        <canvas id="statusChart" data-status-distribution='<?php echo esc_attr($status_data); ?>'></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endif; ?>
     </div>
     <?php
 }
