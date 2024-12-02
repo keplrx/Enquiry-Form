@@ -4,42 +4,39 @@ if (!defined('ABSPATH')) {
 }
 
 function ef_check_woocommerce_status() {
-    // Only run this check on admin pages
     if (!is_admin()) {
         return;
     }
 
-    // Get the current screen
     $screen = get_current_screen();
-
-    // Check if we're on a WordPress core page or an EF plugin page
     $is_wp_core = in_array($screen->base, array('dashboard', 'update-core', 'plugins', 'themes', 'users', 'tools', 'options-general'));
     $is_ef_page = strpos($screen->base, 'enquiry-form') !== false;
 
     if ($is_wp_core || $is_ef_page) {
-        // Check if WooCommerce is active
-        if (!class_exists('WooCommerce')) {
+        if (class_exists('WooCommerce')) {
+            // WooCommerce is active, remove the notice if it exists
+            remove_action('admin_notices', 'ef_display_woocommerce_missing_notice');
+        } else {
             // WooCommerce is not active, display the notice
             add_action('admin_notices', 'ef_display_woocommerce_missing_notice');
         }
     }
 }
+
 function ef_check_wp_mail_smtp_status() {
-    // Only run this check on admin pages
     if (!is_admin()) {
         return;
     }
 
-    // Get the current screen
     $screen = get_current_screen();
-
-    // Check if we're on a WordPress core page or an EF plugin page
     $is_wp_core = in_array($screen->base, array('dashboard', 'update-core', 'plugins', 'themes', 'users', 'tools', 'options-general'));
     $is_ef_page = strpos($screen->base, 'enquiry-form') !== false;
 
     if ($is_wp_core || $is_ef_page) {
-        // Check if WP Mail SMTP is active
-        if (!class_exists('WP_Mail_Smtp')) {
+        if (class_exists('WP_Mail_Smtp')) {
+            // WP Mail SMTP is active, remove the notice if it exists
+            remove_action('admin_notices', 'ef_display_wp_mail_smtp_missing_notice');
+        } else {
             // WP Mail SMTP is not active, display the notice
             add_action('admin_notices', 'ef_display_wp_mail_smtp_missing_notice');
         }
