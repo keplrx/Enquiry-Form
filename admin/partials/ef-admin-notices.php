@@ -65,7 +65,7 @@ function ef_display_woocommerce_missing_notice() {
 function ef_display_wp_mail_smtp_missing_notice() {
     $class = 'notice notice-warning is-dismissible';
     $prefix = '<strong>' . __('Enquiry Form:', 'enquiry-form') . '</strong> ';
-    $message = __('WP Mail SMTP seems to be missing or deactivated. While you may still access and view enquiries, email functionalities may be disabled. ', 'enquiry-form');
+    $message = __('WP Mail SMTP seems to be missing, deactivated or not set up. While you may still access and view enquiries, email functionalities may be disabled. ', 'enquiry-form');
     
     // Get the URL of the plugins page
     $plugins_url = admin_url('plugins.php');
