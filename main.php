@@ -2,7 +2,7 @@
 /*
 Plugin Name: Enquiry Form
 Description: A plugin made by an intern at KBSS :)
-Version: 0.8.3 Development
+Version: 0.9.0 
 Author: Nash Madrid
 Author URI: https://sites.google.com/view/portfoliobynashmadrid/home
 License: GPLv3
