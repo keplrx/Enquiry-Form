@@ -32,9 +32,13 @@ class EF_Email {
             }
 
             $to = get_option('enquiry_form_email', get_option('admin_email'));
+            $from_email = get_option('enquiry_form_email', 'noreply@example.com');
             $subject = 'New Enquiry: ' . sanitize_text_field($form_data['subject']);
             $message = self::get_notification_template($form_data);
-            $headers = array('Content-Type: text/html; charset=UTF-8');
+            $headers = array(
+                'Content-Type: text/html; charset=UTF-8',
+                'From: ' . $from_email
+            );
 
             $result = wp_mail($to, $subject, $message, $headers);
             
