@@ -23,7 +23,7 @@ class EF_Email {
 
     public static function send_notification_email($form_data) {
         try {
-            if (!class_exists('WP_Mail_Smtp')) {
+            if (!class_exists('WPMailSMTP\Core')) {
                 throw new Exception('WP Mail SMTP plugin is not active');
             }
 
@@ -58,7 +58,7 @@ class EF_Email {
                 [
                     'error' => $e->getMessage(),
                     'recipient' => $to ?? 'unknown',
-                    'wp_mail_smtp_active' => class_exists('WP_Mail_Smtp')
+                    'wp_mail_smtp_active' => class_exists('WPMailSMTP\Core')
                 ]
             );
             return false;
@@ -67,7 +67,7 @@ class EF_Email {
 
     public static function send_confirmation_email($form_data) {
         try {
-            if (!class_exists('WP_Mail_Smtp')) {
+            if (!class_exists('WPMailSMTP\Core')) {
                 throw new Exception('WP Mail SMTP plugin is not active');
             }
 
@@ -102,7 +102,7 @@ class EF_Email {
                 [
                     'error' => $e->getMessage(),
                     'recipient' => $to ?? 'unknown',
-                    'wp_mail_smtp_active' => class_exists('WP_Mail_Smtp')
+                    'wp_mail_smtp_active' => class_exists('WPMailSMTP\Core')
                 ]
             );
             return false;

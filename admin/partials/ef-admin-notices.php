@@ -33,7 +33,7 @@ function ef_check_wp_mail_smtp_status() {
     $is_ef_page = strpos($screen->base, 'enquiry-form') !== false;
 
     if ($is_wp_core || $is_ef_page) {
-        if (class_exists('WP_Mail_Smtp')) {
+        if (class_exists('WPMailSMTP\Core')) {
             // WP Mail SMTP is active, remove the notice if it exists
             remove_action('admin_notices', 'ef_display_wp_mail_smtp_missing_notice');
         } else {
