@@ -46,7 +46,7 @@
                 <table class="table">
                     <tr>
                         <th>Product</th>
-                        <th>Category</th>
+                        <!-- <th>Category</th> -->
                         <th>SKU</th>
                     </tr>
                     <?php foreach ($cart_items as $cart_item_key => $cart_item) : 
@@ -54,14 +54,14 @@
                         $product_name = $product->get_name();
                         $sku = $product->get_sku();
                         $category = '';
-                        $terms = get_the_terms($product->get_id(), 'product_cat');
-                        if ($terms && !is_wp_error($terms)) {
-                            $category = $terms[0]->name;
-                        }
+                        // $terms = get_the_terms($product->get_id(), 'product_cat');
+                        // if ($terms && !is_wp_error($terms)) {
+                        //     $category = $terms[0]->name;
+                        // }
                     ?>
                         <tr>
                             <td><strong><?php echo esc_html($product_name); ?></strong></td>
-                            <td><?php echo esc_html($category); ?></td>
+                            <!-- <td><?php echo esc_html($category); ?></td> -->
                             <td><?php echo esc_html($sku); ?></td>
                         </tr>
                     <?php endforeach; ?>

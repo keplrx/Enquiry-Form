@@ -46,7 +46,7 @@
                 <table class="table">
                     <tr>
                         <th>Product</th>
-                        <th>Category</th>
+                        <!-- <th>Category</th> -->
                         <th>SKU</th>
                     </tr>
                     <?php foreach ($cart_items as $cart_item_key => $cart_item) : 
@@ -61,7 +61,7 @@
                     ?>
                         <tr>
                             <td><strong><?php echo esc_html($product_name); ?></strong></td>
-                            <td><?php echo esc_html($category); ?></td>
+                            <!-- <td><?php echo esc_html($category); ?></td> -->
                             <td><?php echo esc_html($sku); ?></td>
                         </tr>
                     <?php endforeach; ?>
