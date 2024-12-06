@@ -11,7 +11,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>New Enquiry Notification</h1>
+            <div class="header-content">
+                <div class="logo">
+                    <img src="<?php echo esc_url(ENQUIRY_FORM_URL . 'assets/images/kbss-logo.jpg'); ?>" alt="KBSS Logo">
+                </div>
+                <h1 style="padding-top: 15px;">New Enquiry Notification</h1>
+            </div>
         </div>
         <p><strong>Dear Kong Beng Sales Team,</strong></p>
         <p>There is a new Enquiry from <strong><?php echo esc_html($form_data['name']); ?></strong> via the website. Here are the details:</p>

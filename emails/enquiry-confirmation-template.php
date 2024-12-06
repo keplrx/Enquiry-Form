@@ -11,7 +11,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Enquiry Confirmation</h1>
+            <div class="header-content">
+                <div class="logo">
+                    <img src="<?php echo esc_url(ENQUIRY_FORM_URL . 'assets/images/kbss-logo.jpg'); ?>" alt="KBSS Logo">
+                </div>
+                <h1 style="padding-top: 15px;">Enquiry Confirmation</h1>
+            </div>
         </div>
         <p><strong>Hello <?php echo esc_html($form_data['name']); ?>!</strong></p>
         <p>Thank you for reaching out to us. We have received your enquiry, here are the details:</p>
