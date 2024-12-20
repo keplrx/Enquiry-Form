@@ -30,7 +30,6 @@ class EF_Activation {
             status varchar(20) NOT NULL DEFAULT 'Unreplied',
             PRIMARY KEY  (id)
         ) $charset_collate;";
-
         $cart_items_sql = "CREATE TABLE $cart_items_table (
             id mediumint(9) NOT NULL AUTO_INCREMENT,
             enquiry_id mediumint(9) NOT NULL,

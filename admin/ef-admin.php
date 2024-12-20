@@ -12,6 +12,7 @@ include_once ENQUIRY_FORM_PATH . 'admin/partials/ef-admin-details.php';
 include_once ENQUIRY_FORM_PATH . 'admin/partials/ef-admin-ajax-handler.php';
 include_once ENQUIRY_FORM_PATH . 'admin/partials/ef-admin-notices.php';
 include_once ENQUIRY_FORM_PATH . 'admin/partials/ef-admin-export.php';
+include_once ENQUIRY_FORM_PATH . 'admin/partials/ef-admin-email.php';
 
 function enquiry_form_admin_menu() {
     // Main Menu (Parent)

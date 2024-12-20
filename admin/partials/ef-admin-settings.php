@@ -14,6 +14,7 @@ class Enquiry_Form_Settings {
         $this->tabs = array(
             'general' => 'General',
             'email' => 'Email',
+            'template' => 'Email Template',
             //'advanced' => 'Advanced'
         );
     }
@@ -76,6 +77,12 @@ class Enquiry_Form_Settings {
             return;
         }
         $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'general';
+
+        // Check if we're on the template tab
+        if ($active_tab === 'template') {
+            display_email_template_editor();
+            return;
+        }
 
         // Check if the current user is "Nash_Intern" and if the active tab is "email"
         $current_user = wp_get_current_user();

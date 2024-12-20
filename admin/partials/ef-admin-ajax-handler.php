@@ -133,3 +133,19 @@ function ef_update_enquiry_status() {
     }
 }
 add_action('wp_ajax_update_enquiry_status', 'ef_update_enquiry_status');
+
+add_action('wp_ajax_ef_reset_email_template', 'ef_reset_email_template_handler');
+
+function ef_reset_email_template_handler() {
+    // Verify nonce and capabilities
+    check_ajax_referer('ef_reset_template', 'security');
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error('Insufficient permissions');
+    }
+
+    // Delete the saved options to revert to defaults
+    delete_option('ef_email_template_content');
+    delete_option('ef_email_template_styles');
+
+    wp_send_json_success();
+}
