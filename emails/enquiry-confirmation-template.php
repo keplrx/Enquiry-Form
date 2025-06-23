@@ -20,7 +20,6 @@
         </div>
         <p><strong>Hello <?php echo esc_html($form_data['name']); ?>!</strong></p>
         <p>Thank you for reaching out to us. We have received your enquiry, here are the details:</p>
-        <p>Thank you for reaching out to us. We have received your enquiry, here are the details:</p>
 
         <table class="table">
             <tr>
